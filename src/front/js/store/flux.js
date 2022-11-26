@@ -1,52 +1,133 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			beanSpecials: [],
+			beanElectronics: [],
+			beanHomegoods: [],
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+
+			syncTokenFromSessionStore: () => {
+				const token = sessionStorage.getItem('token');
+				if(token && token !="" && token !=undefined) setStore({ token: token});
 			},
 
-			getMessage: async () => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
+			logout: () => {
+				const token = sessionStorage.removeItem("token");
+				setStore({ token: null });
+				//redirect here
+				// window.location.href ="https://3000-nchang007-finalproject-o8dy4ie9ail.ws-us60.gitpod.io/login"
+			  },
+			// LogIn ----------------------------------------------------------------------------------------
+			login: async (email, password) => {
+				const opts = {
+				  method: "POST",
+				  mode: "cors",
+				  headers: {
+					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					// "Access-Control-Allow-Headers": "Origin",
+					//"X-Requested-With, Content-Type": "Accept",
+				  },
+				  body: JSON.stringify({
+					email: email,
+					password: password,
+				  }),
+				};
+				try {
+				  const resp = await fetch(
+					"https://3001-nchang007-shopsmartly-717tjk4t1f9.ws-us77.gitpod.io/api/login",
+					opts
+				  );
+				  if (resp.status !== 200) {
+					alert("there has been an error");
+					return false;
+				  }
+				  const data = await resp.json();
+				  console.log(data);
+				  if (data.msg) {
+					setStore({ message: data.msg });
+				  } else {
+					sessionStorage.setItem("token", data.access_token);
+					setStore({ token: data.access_token});
+				  }
+		
+				  return true;
+				} catch (error) {
+				  console.error("there was an error", error);
 				}
+			  },
+			
+			// add user ------------------------------------------------------------------------------------------------------------------
+			createUser: async (Uname, Remail, Rpassword) => {
+				const opts = {
+					method: "POST",
+					mode: "cors",
+					headers: {
+					  "Content-Type": "application/json",
+					  "Access-Control-Allow-Origin": "*",
+					//   "Access-Control-Allow-Headers": "Origin",
+					//   "X-Requested-With, Content-Type": "Accept",
+					},
+					body: JSON.stringify({
+					  Uname: Uname,
+					  email: Remail,
+					  password: Rpassword,
+					}),
+				};
+				try {
+					const resp = await fetch(
+					  "https://3001-nchang007-shopsmartly-717tjk4t1f9.ws-us77.gitpod.io/api/createUser",
+					  opts
+					);
+					if (resp.status !== 200) {
+					  alert("there has been an error");
+					  return false;
+					}
+					const data = await resp.json();
+					console.log(data);
+					if (data.status == "true") {
+						//rederect to login
+						// window.location.href =""
+						setNewUser(false) 
+					  } else {
+						setStore({ message: data.msg });
+					  }
+
+					return true;
+				  } catch (error) {
+					console.error("there was an error", error);
+				  }
 			},
-			changeColor: (index, color) => {
-				//get the store
+			// GETTING THE CONTENT --------------------------------------------
+			loadBeanShop: () => {
 				const store = getStore();
+				const opts = {
+					method: "GET",
+					mode: "cors",
+					headers: {
+					  "Content-Type": "application/json",
+					  "Access-Control-Allow-Origin": "*",
+					  //"Access-Control-Allow-Headers": "Origin",
+					  //"X-Requested-With, Content-Type": "Accept",
+					},
+				}
+				// fetch people from CustomContent
+				fetch('beanShop.json', opts)
+				.then((response) => response.json())
+				.then((data) => {
+					console.log(data);
+					let specials = data.specials
+					let electronics = data.electronics
+					let homegoods = data.homegoods
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+					setStore({beanSpecials:specials, beanElectronics:electronics, beanHomegoods:homegoods})
+				})
+				.catch((error) => {
+					//error handling
+					console.log('There is an error on the fetch at flux', error);
 				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			},
 		}
 	};
 };

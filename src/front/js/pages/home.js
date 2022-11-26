@@ -1,26 +1,51 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+// import Pagination from "../component/Pagination";
+import Card from "../component/Card"
+import Banner from "../component/Banner";
+import { Link } from "react-router-dom";
+
+
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
-
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+		<div className="text-center bodyCont bg-color04">
+			<Banner />
+			<h2 className="color01">Specials!</h2>
+			<div className="itemCont">
+				{store.beanSpecials.map((item, idx) => {
+					return (
+						<div className="itemDiv" key={idx}>
+							<Card item={item} id={idx} />
+						</div>
+					)
+				})}
 			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
+			<h2 className="color01">Electronics!</h2>
+            <Link to="/Category">                
+                <a className="viewAllAncor">View All Electronics</a>
+            </Link> 
+			<div className="itemCont">
+				{store.beanElectronics.map((item, idx) => {
+					return (
+						<div className="itemDiv" key={idx}>
+							<Card item={item} id={idx} />
+						</div>
+					)
+				})}
+			</div>
+			<h2 className="color01">Home!</h2>
+			<div className="itemCont">
+				{store.beanHomegoods.map((item, idx) => {
+					return (
+						<div className="itemDiv" key={idx}>
+							<Card item={item} id={idx} />
+						</div>
+					)
+				})}
+			</div>
 		</div>
 	);
 };

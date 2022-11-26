@@ -1,3 +1,75 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.searchbar {
+    width: 30%;
+    /* text-align:center; */
+}
+.myBtn {
+    background-color: aqua;
+}
+.bannerCont {
+    color: white;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(47,22,122,1) 53%, rgba(0,75,168,1) 100%);
+}
+#topNav{
+    background-color: #24272B;
+}
+/* div scroll------------------------- */
+/* this is the parent div */
+.itemCont {
+    width: 70%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    margin: 1rem;
+    /* background-color: rgba(139,160,164, 0.1); */
+    backdrop-filter: blur(15px);
+}
+/* this is the child */
+.itemDiv {
+    display: inline-block;
+    margin-right: 1rem;
+    box-sizing: border-box;
+}
+.card-row {
+    overflow-x: scroll;
+}
+/* scrollbar styles */
+.itemCont::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+}
+
+.itemCont::-webkit-scrollbar-track {
+    background: lightgrey; /* color of the tracking area */
+}
+
+.itemCont::-webkit-scrollbar-thumb {
+    background-color: #d74a49; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid lightgray; /* creates padding around scroll thumb */
+}
+
+/* card----------------------------- */
+.card {
+    white-space: pre-line;
+}
+.card > img {
+    max-height: 12rem;    
+    min-height: 12rem;
+    height: auto;
+}
+.card > .card-body {
+    height: 4rem;
+    overflow: hidden;
+}
+.card > .card-body > h5 {
+    font-size: 1rem;
+}
+#homebg{
+    background-color: #24272B;
+}
+
+/* Category page------------------------- */
+.categoryCont {
+    padding: 1rem;
+}

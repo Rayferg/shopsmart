@@ -9,9 +9,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export const MyNavbar = () => {
 	return (
-			<Navbar bg="primary" variant="dark">
-			  <Container fluid>
-				<Navbar.Brand href="#">
+			<Navbar id="topNav">
+			  <Container fluid >
+				<Navbar.Brand href="#" style={{color:"white"}}>
 					Shop Smart
 					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 				</Navbar.Brand>
