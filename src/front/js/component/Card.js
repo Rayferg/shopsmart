@@ -12,7 +12,7 @@ const Card = (props) => {
             <span className="-btn btn btn-primary"><i>Learn More</i></span>
 			    </Link> */}
         <div className="card-body">
-            <h5 className="card-title">{" $:"}{props.item.price}</h5>
+            <h5 className="card-title">{" $"}{props.item.price}</h5>
             <h5 className="card-title">{props.item.name}</h5>
             {/* <p className="card-text">{props.item.description}</p> */}
         </div>

@@ -6,6 +6,7 @@ import { Context } from "../store/appContext";
     
 function ViewItem() {
     const {store, actions} = useContext(Context)
+    const [value, setValue] = useState()
     let params = useParams()
     // console.log(params);
     let type = params.type
@@ -23,25 +24,25 @@ function ViewItem() {
     
     return (  
             <div className='viewitemPageContainer'>
-                    <img 
+                <img 
                     className="aboutImg"
-                    src={item.image} alt="..." />
+                    src={item.image} alt="..." 
+                />
                 <div className='midSection'>
-                    <h6><strong>Name: </strong>{item.name}</h6>
-                    <h5>{item.price}</h5>
+                    <h6><strong>{item.name}</strong></h6>
+                    <div className="input-group mb-3">
+                        <select className="custom-select" id="inputGroupSelect02">
+                            <option selected>Choose Price...</option>
+                            <option value="1">Bean Shop {item.beanShopPrice}</option>
+                            <option value="2">Walmart {item.walmartPrice}</option>
+                            <option value="3">Targer {item.targetPrice}</option>
+                        </select>
+                    </div>
                     <p>
                         {item.description}
                     </p>
-                </div>
-
-                <div className='rightSection'>
-                    {/* <h6><strong>Price: </strong>{item.price}</h6>
-                    <h6><strong>Image: </strong>{item.image}</h6>
-                    <h6><strong>Description: </strong>{item.description}</h6> */}
-                </div>
-                <div>
-                {/* <Button href="#">Link</Button> <Button type="submit">Add to Cart</Button>{' '} 
-                <Button href="#">Link</Button> <Button type="submit">Add to Budget Buddy</Button>{' '} */}
+                    <button className="btn btn-info">Add to Cart</button>
+                    <button className="btn btn-info">Add to Budget Buddy</button>
                 </div>
             </div>
 

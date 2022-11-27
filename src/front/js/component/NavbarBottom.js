@@ -12,7 +12,7 @@ const NavbarBottom = () => {
         overrides: {
           MuiTabs: {
             root: {
-              backgroundColor: "#183e4b"
+              backgroundColor: "#24272B"
             },
             indicator: {
               backgroundColor: '#d74a49'
@@ -57,12 +57,9 @@ const NavbarBottom = () => {
                             setValue(newValue);
                         }}
                     >
-                        <Tab 
-                            label="Categories" 
-                            key='1' 
-                        />
-                        <Tab label="Budget Buddy" key='2' />
-                        <Tab label="Barcode Scanner" key='3' />
+                        <Tab label="Categories"  />
+                        <Tab label="Budget Buddy" />
+                        <Tab label="Barcode Scanner" />
                     </Tabs>
                     {value == 0 ? categories : ""}
                     {value == 1 ? categories2 : ""}
