@@ -7,7 +7,7 @@ import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 
 
 const NavbarBottom = () => {
-    const [value, setValue] = React.useState(4);
+    const [value, setValue] = React.useState(0);
     const theme = createTheme({
         overrides: {
           MuiTabs: {

@@ -13,7 +13,7 @@ export const MyNavbar = () => {
 			  <Container fluid >
 				<Navbar.Brand href="#" style={{color:"white"}}>
 					Shop Smart
-					<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+					<i className="fa fa-shopping-cart" aria-hidden="true"></i>
 				</Navbar.Brand>
 				{/* <Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll"> */}

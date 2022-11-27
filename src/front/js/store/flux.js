@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			beanSpecials: [],
 			beanElectronics: [],
 			beanHomegoods: [],
+			allItems:[]
 		},
 		actions: {
 
@@ -122,11 +123,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let homegoods = data.homegoods
 
 					setStore({beanSpecials:specials, beanElectronics:electronics, beanHomegoods:homegoods})
+					// setStore({allItems:specials, electronics, homegoods})
 				})
 				.catch((error) => {
 					//error handling
 					console.log('There is an error on the fetch at flux', error);
 				});
+			},
+			getSpecials: (idx) => {
+				const special = getStore().beanSpecials;
+				return special[idx];
+			},
+			getElectronics: (idx) => {
+				const special = getStore().beanElectronics;
+				return special[idx];
+			},
+			getHomeGoods: (idx) => {
+				const special = getStore().beanHomegoods;
+				return special[idx];
 			},
 		}
 	};

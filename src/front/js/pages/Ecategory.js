@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import Card from "../component/Card"
 
-export const Category = () => {
+export const Ecategory = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
