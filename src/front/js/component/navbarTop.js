@@ -6,8 +6,16 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useState, useContext, useEffect } from "react";
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Login from "./Login";
+import { Context } from "../store/appContext";
 
 export const MyNavbar = () => {
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+	
 	return (
 			<Navbar id="topNav">
 			  <Container fluid >
@@ -30,11 +38,18 @@ export const MyNavbar = () => {
 					  aria-label="Search"
 					/>
 				  </Form>
-					<Nav.Link href="#" style={{color: "white"}} >
-					  Log in / Sign Up
-					</Nav.Link>
-				  {/* </Nav> */}
-				{/* </Navbar.Collapse> */}
+				<Button variant="primary" onClick={handleShow}>
+					LogIn
+				</Button>
+
+				<Offcanvas show={show} placement='end' onHide={handleClose} >
+					<Offcanvas.Header closeButton>
+						<Offcanvas.Title>LogIn</Offcanvas.Title>
+					</Offcanvas.Header>
+					<Offcanvas.Body>
+						<Login />
+					</Offcanvas.Body>
+				</Offcanvas>	
 			  </Container>
 			</Navbar>
 	);

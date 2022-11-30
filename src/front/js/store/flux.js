@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			beanSpecials: [],
 			beanElectronics: [],
 			beanHomegoods: [],
-			allItems:[]
+			// allItems:[],
+			token: null,
 		},
 		actions: {
 
@@ -17,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const token = sessionStorage.removeItem("token");
 				setStore({ token: null });
 				//redirect here
-				// window.location.href ="https://3000-nchang007-finalproject-o8dy4ie9ail.ws-us60.gitpod.io/login"
+				
 			  },
 			// LogIn ----------------------------------------------------------------------------------------
 			login: async (email, password) => {
@@ -37,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try {
 				  const resp = await fetch(
-					"https://3001-nchang007-shopsmartly-717tjk4t1f9.ws-us77.gitpod.io/api/login",
+					"https://3001-rayferg-shopsmart-86o31b7ztig.ws-us77.gitpod.io/api/login",
 					opts
 				  );
 				  if (resp.status !== 200) {
@@ -78,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try {
 					const resp = await fetch(
-					  "https://3001-nchang007-shopsmartly-717tjk4t1f9.ws-us77.gitpod.io/api/createUser",
+					  "https://3001-rayferg-shopsmart-86o31b7ztig.ws-us77.gitpod.io/api/createUser",
 					  opts
 					);
 					if (resp.status !== 200) {
@@ -90,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (data.status == "true") {
 						//rederect to login
 						// window.location.href =""
-						setNewUser(false) 
+						// setNewUser(false) 
 					  } else {
 						setStore({ message: data.msg });
 					  }

@@ -38,11 +38,11 @@ function ViewItem() {
                             <option value="3">Targer {item.targetPrice}</option>
                         </select>
                     </div>
-                    <p>
+                    <p className="itemDesc">
                         {item.description}
                     </p>
-                    <button className="btn btn-info">Add to Cart</button>
-                    <button className="btn btn-info">Add to Budget Buddy</button>
+                    <button id="btncb" className="btn btn-info ">Add to Cart</button>
+                    <button id="btncb"className="btn btn-info ">Add to Budget Buddy</button>
                 </div>
             </div>
 
