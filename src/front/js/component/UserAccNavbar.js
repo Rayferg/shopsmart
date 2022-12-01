@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
+import BudgetList from "./BudgetList";
 
 
 const UserAccNavbar = () => {
@@ -33,7 +34,7 @@ const UserAccNavbar = () => {
           }
         }
       });
-    let categories = <h2>hello</h2>
+    let categories = <BudgetList/>
     let categories2 = <h2>world</h2>
     return (
         <div

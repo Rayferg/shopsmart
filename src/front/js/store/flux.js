@@ -4,10 +4,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			beanSpecials: [],
 			beanElectronics: [],
 			beanHomegoods: [],
+			beanBudgetList:[
+				{"name": "item1", "value":5},
+				{"name": "item1", "value":7}
+			],
 			// allItems:[],
 			token: null,
 		},
 		actions: {
+			handleItemDelete: (idx) => {
+				const beanBudgetList = getStore().beanBudgetList
+				let filtered = beanBudgetList.filter((f, i) => i !== idx)
+				setStore({beanBudgetList: filtered})
+
+			},
+
+			addToBudget: (name, value) => {
+				console.log(name, value);
+				let item = {
+					"name": name,
+					"value": value
+				}
+				getStore().beanBudgetList.push(item)
+				setStore({beanBudgetList: getStore().beanBudgetList})
+			},
 
 			syncTokenFromSessionStore: () => {
 				const token = sessionStorage.getItem('token');

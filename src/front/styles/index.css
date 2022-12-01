@@ -87,18 +87,40 @@
 
 
 /* view items page----------------------------- */
-.viewitemPageContainer{
+.viewitemPageContainer {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.-btn{
     padding: 1rem;
 }
-.itemDesc{
-    margin: 1rem;
-}
-.aboutImg {
-    width: 450px;
-    max-height: 350px;
+.viewitemPageInfo{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .viewPageImg {
+    width: 400px;
     margin-right: 1rem;
-}
+  }
+  .midSection > h1 {
+    border-bottom: 1px solid;
+  }
+  .costSelect {
+    /* width: 200px; */
+    height: 30px;
+    background: #1b4552;
+    color: white;
+  }
+  .costSelect > option{
+    color: white;
+  }
+  button{
+
+  }
 /* Buttons for the add to cart & Budget Buddy--------------------------------------*/
 #btncb {
     margin: 8px;

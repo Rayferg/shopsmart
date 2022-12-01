@@ -3,6 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 
 
@@ -34,7 +35,20 @@ const NavbarBottom = () => {
           }
         }
       });
-    let categories = <h2>hello</h2>
+    let categories = 
+      <div>
+        <ul>
+          <li>
+            <Link to="/Scategory">
+                    <span 
+                      className="catAllSpecial"
+                    > Specials
+                    </span> 
+                </Link></li>
+          <li>Electronics</li>
+          <li>Home Goods</li>
+        </ul>
+      </div>
     let categories2 = <h2>world</h2>
     let categories3 = <h2>hello world</h2>
     return (

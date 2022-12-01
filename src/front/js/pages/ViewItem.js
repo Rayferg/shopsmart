@@ -1,13 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import Button from 'react-bootstrap/Button';
 import { useParams } from 'react-router-dom';
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
     
 function ViewItem() {
     const {store, actions} = useContext(Context)
     const [value, setValue] = useState()
     let params = useParams()
+    let selectedValue = useRef("")
     // console.log(params);
     let type = params.type
     let item = null
@@ -21,29 +23,45 @@ function ViewItem() {
     }
     
     
-    
     return (  
             <div className='viewitemPageContainer'>
+                <div className="viewitemPageInfo">
                 <img 
-                    className="aboutImg"
+                    className="viewPageImg"
                     src={item.image} alt="..." 
                 />
                 <div className='midSection'>
-                    <h6><strong>{item.name}</strong></h6>
-                    <div className="input-group mb-3">
-                        <select className="custom-select" id="inputGroupSelect02">
+                    <h1><strong>{item.name}</strong></h1>
+                    <h6>We scoured the internet looking for the best options for you.
+                        <br/>
+                        This is what we found 
+                        <br/>
+                        Enjoy the best Prices we could find
+                    </h6>
+                    <div className="input-group mb-3 ">
+                        <select className="custom-select costSelect" id="inputGroupSelect02" ref={selectedValue}>
                             <option selected>Choose Price...</option>
-                            <option value="1">Bean Shop {item.beanShopPrice}</option>
-                            <option value="2">Walmart {item.walmartPrice}</option>
-                            <option value="3">Targer {item.targetPrice}</option>
+                            <option value={item.beanShopPrice}>Bean Shop {item.beanShopPrice}</option>
+                            <option value={item.walmartPrice}>Walmart {item.walmartPrice}</option>
+                            <option value={item.targetPrice}>Targer {item.targetPrice}</option>
                         </select>
                     </div>
-                    <p className="itemDesc">
+                    <h5>
+                        <strong>Item Description</strong>
+                        <br/>
                         {item.description}
-                    </p>
+                    </h5>
                     <button id="btncb" className="btn btn-info ">Add to Cart</button>
-                    <button id="btncb"className="btn btn-info ">Add to Budget Buddy</button>
+                    <button className="btn btn-info" onClick={()=> actions.addToBudget(item.name, selectedValue.current.value)}>Add to Budget Buddy</button>
+
                 </div>
+                </div>
+                <Link to="/">
+                    <i 
+                    className="-btn btn btn-danger"
+                    style={{width:"400px"}}
+                    > RETURN HOME</i> 
+                </Link>
             </div>
 
   );

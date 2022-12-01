@@ -7,7 +7,7 @@ export const Scategory = () => {
 
 	return (
 		<div className="text-center categoryCont">
-			<h2 className="color01">Electronics</h2>
+			<h2 className="color01">Specials</h2>
 			<div className="row">
 				{store.beanSpecials.map((item, idx) => {
 					return (
