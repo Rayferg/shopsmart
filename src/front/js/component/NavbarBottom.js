@@ -9,7 +9,7 @@ import BudgetList from "./BudgetList";
 
 
 const NavbarBottom = () => {
-    const [value, setValue] = React.useState(2);
+    const [value, setValue] = React.useState(1);
     const themes = createTheme({
         overrides: {
           MuiTabs: {

@@ -18,8 +18,8 @@ const Login = () => {
   const [Uname, setUname] = useState('');
 
   const history = useNavigate();
-  const [newUser, setNewUser] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [newUser, setNewUser] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const token = sessionStorage.getItem("token");
         console.log(token);
@@ -28,30 +28,30 @@ const Login = () => {
     e.preventDefault();
     // console.log(e.target)
     actions.createUser(Uname, Remail, Rpassword)
-    
+    // actions.handleNewUserTrueOrFalse(false)
+    // actions.handleIsLoggedInTrueOrFalse(false)
   }
   const handleLoginClick = (e) => {
     e.preventDefault();
     // console.log(e.target)
     actions.login(email, password)
-    setIsLoggedIn(true)
+    // setIsLoggedIn(true)
   }
   const redirect = (e) => {
     e.preventDefault();
-    setNewUser(true)
-    console.log(newUser);
+    actions.handleNewUserTrueOrFalse(true)
   }
   const handleLogoutClick = () => {
     actions.logout()
-    setNewUser(false)
-    setIsLoggedIn(false)
+    // actions.handleNewUserTrue()
+    // setIsLoggedIn(false)
   } 
     
   React.useEffect(() => {
-    if (token != "" && token != undefined) setIsLoggedIn(true)
+    if (token != "" && token != undefined) actions.handleIsLoggedInTrueOrFalse(true)
   },[])
 
-  let fields = newUser == false ?
+  let fields = store.newUser == false ?
     <div className="login-form">
       <form>
         <h1>Login</h1>
@@ -91,7 +91,7 @@ const Login = () => {
               <a href="#" className="link">Forgot Your Password?</a>
               <br/>
           
-              <a href="#" className="link" onClick={() => setNewUser(false)}>Go Back</a>
+              <a href="#" className="link" onClick={() => actions.handleNewUserTrueOrFalse(false)}>Go Back</a>
               
           </div>
 
@@ -113,7 +113,7 @@ const Login = () => {
 
   return (
     <div>
-      {isLoggedIn == false ? fields : userAcc}
+      {store.isLoggedIn == false ? fields : userAcc}
       
     </div>
   );

@@ -14,8 +14,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			// allItems:[],
 			token: null,
+			isLoggedIn: false,
+			newUser: false,
 		},
 		actions: {
+			handleNewUserTrueOrFalse: (e) => {
+				let newUser = getStore().newUser
+				newUser = e
+				setStore({newUser:newUser})
+			},
+			handleIsLoggedInTrueOrFalse: (e) => {
+				let isLoggedIn = getStore().isLoggedIn
+				isLoggedIn = e
+				setStore({isLoggedIn:isLoggedIn})
+			},
+
 			handleCartItemDelete: (idx) => {
 				const cart = getStore().beanCart
 				let filtered = cart.filter((f, i) => i !== idx)
@@ -54,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				const token = sessionStorage.removeItem("token");
-				setStore({ token: null });
+				setStore({ token: null, isLoggedIn: false });
 				//redirect here
 				
 			  },
@@ -89,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ message: data.msg });
 				  } else {
 					sessionStorage.setItem("token", data.access_token);
-					setStore({ token: data.access_token});
+					setStore({ token: data.access_token, isLoggedIn: true});
 				  }
 		
 				  return true;
@@ -128,8 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					if (data.status == "true") {
 						//rederect to login
-						// window.location.href =""
-						// setNewUser(false) 
+						setStore({newUser: false, isLoggedIn: false})
 					  } else {
 						setStore({ message: data.msg });
 					  }
