@@ -4,6 +4,7 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import BudgetList from "./BudgetList";
+import CartList from "./CartList.js";
 
 
 const UserAccNavbar = () => {
@@ -34,8 +35,8 @@ const UserAccNavbar = () => {
           }
         }
       });
-    let categories = <BudgetList/>
-    let categories2 = <h2>world</h2>
+    let categories = <BudgetList color={"black"}/>
+    let categories2 = <CartList />
     return (
         <div
         style={{
@@ -45,7 +46,7 @@ const UserAccNavbar = () => {
         }}
         >
             
-                <MuiThemeProvider theme={theme}>
+                {/* <MuiThemeProvider > */}
                     <Tabs
                         value={value}
                         textColor="secondary"
@@ -57,14 +58,15 @@ const UserAccNavbar = () => {
                         }}
                     >
                         <Tab 
-                            label="Cart" 
+                            label="Budget Buddy" 
                             key='0' 
+                            style={{background:"white"}}
                         />
-                        <Tab label="Buget Buddy" key='1' />
+                        <Tab label="Cart" key='1' style={{background:"white"}}/>
                     </Tabs>
                     {value == 0 ? categories : ""}
                     {value == 1 ? categories2 : ""}
-                </MuiThemeProvider>
+                {/* </MuiThemeProvider> */}
            
        
         </div>

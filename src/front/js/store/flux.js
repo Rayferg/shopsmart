@@ -8,15 +8,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{"name": "item1", "value":5},
 				{"name": "item1", "value":7}
 			],
+			beanCart:[
+				{"name": "item1", "value":5},
+				{"name": "item2", "value":7}
+			],
 			// allItems:[],
 			token: null,
 		},
 		actions: {
+			handleCartItemDelete: (idx) => {
+				const cart = getStore().beanCart
+				let filtered = cart.filter((f, i) => i !== idx)
+				setStore({beanCart: filtered})
+			},
+
+			addToCart: (name, value) => {
+				console.log(name, value);
+				let item = {
+					"name": name,
+					"value": value
+				}
+				getStore().beanCart.push(item)
+				setStore({beanCart: getStore().beanCart})
+			},
 			handleItemDelete: (idx) => {
 				const beanBudgetList = getStore().beanBudgetList
 				let filtered = beanBudgetList.filter((f, i) => i !== idx)
 				setStore({beanBudgetList: filtered})
-
 			},
 
 			addToBudget: (name, value) => {

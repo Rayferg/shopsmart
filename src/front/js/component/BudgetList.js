@@ -5,26 +5,14 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
     
-function BudgetList() {
+function BudgetList({color}) {
     const {store, actions} = useContext(Context)
     const [values, setValues] = useState({
         "total": 0,
         "left": 0
     })
     const [items, setItems] = useState([])
-    // let params = useParams()
-    // // console.log(params);
-    // let type = params.type
-    // let item = null
-    // if(type == "special"){
-    //     item = actions.getSpecials(parseInt(params.id))
-    //     console.log(item);
-    // }else if(type == "electronics"){
-    //     item = actions.getElectronics(parseInt(params.id))
-    // }else{
-    //     item = actions.getHomeGoods(parseInt(params.id))
-    // }
-    //console.log(store.beanBudgetList.reduce(function (acc, obj) { return acc + obj.value; }, 0));
+   
     const handleBudget = (e) => {
         let v = {
             "total": e.target.value,
@@ -36,22 +24,24 @@ function BudgetList() {
     
     
     return (  
-        <div className='budget-list'>
+        <div className='budget-list' >
             <div className="budget-total">
-                <input type="number" placeholder="enter budget" onChange={(e) => handleBudget(e)}/>
+                <input type="number" placeholder="Enter Budget" onChange={(e) => handleBudget(e)}/>
             </div>
             <div className="budget-items">
                 {store.beanBudgetList.map((obj, i) => {
-                    return  <p 
+                    return  <div 
                                 key={i}
+                                className="budget-item"
                             >
-                                {obj.name}{obj.value}
-                                <button onClick={()=> actions.handleItemDelete(i)}>Delete</button>
-                            </p>
+                                <h5 className="budget-item-name" style={{color:color}}>{obj.name}</h5>
+                                <h5 style={{color:color}}>{obj.value}</h5>
+                                <i onClick={()=> actions.handleItemDelete(i)} className="fas fa-trash-alt" style={{color:color}}></i>
+                            </div>
                 })}
             </div>
             <div className="budget-remainder">
-                <p>Left: {values.left}</p>
+                <p style={{color:color}}>Left: {values.left}</p>
             </div>
         </div>
 

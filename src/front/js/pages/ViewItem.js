@@ -43,7 +43,7 @@ function ViewItem() {
                             <option selected>Choose Price...</option>
                             <option value={item.beanShopPrice}>Bean Shop {item.beanShopPrice}</option>
                             <option value={item.walmartPrice}>Walmart {item.walmartPrice}</option>
-                            <option value={item.targetPrice}>Targer {item.targetPrice}</option>
+                            <option value={item.targetPrice}>Target {item.targetPrice}</option>
                         </select>
                     </div>
                     <h5>
@@ -51,7 +51,7 @@ function ViewItem() {
                         <br/>
                         {item.description}
                     </h5>
-                    <button id="btncb" className="btn btn-info ">Add to Cart</button>
+                    <button id="btncb" className="btn btn-info " onClick={()=> actions.addToCart(item.name, selectedValue.current.value)}>Add to Cart</button>
                     <button className="btn btn-info" onClick={()=> actions.addToBudget(item.name, selectedValue.current.value)}>Add to Budget Buddy</button>
 
                 </div>

@@ -4,53 +4,97 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import BudgetList from "./BudgetList";
 
 
 
 const NavbarBottom = () => {
-    const [value, setValue] = React.useState(0);
-    const theme = createTheme({
+    const [value, setValue] = React.useState(2);
+    const themes = createTheme({
         overrides: {
           MuiTabs: {
             root: {
               backgroundColor: "#24272B"
             },
             indicator: {
-              backgroundColor: '#d74a49'
+              backgroundColor: '#0d6efd'
             }
           },
           MuiTab: {
             root: {
               "&$selected": {
-                color: "#d74a49",
+                color: "#0d6efd",
       
                 "&:hover": {
-                  color: "#d74a49"
+                  color: "#0d6efd"
                 }
               }
             },
             wrapper: {
-              color: "#d74a49"
+              color: "#0d6efd"
             }
           }
         }
       });
     let categories = 
-      <div>
+      <div className="categoriesContainer">
         <ul>
-          <li>
+          <li className="catAll">
             <Link to="/Scategory">
-                    <span 
-                      className="catAllSpecial"
-                    > Specials
-                    </span> 
-                </Link></li>
-          <li>Electronics</li>
-          <li>Home Goods</li>
+              <span > Specials</span> 
+            </Link>
+          </li>
+          <li className="catAll">
+            <Link to="/Ecategory">
+              <span > Electronics</span> 
+            </Link>
+          </li>
+          <li className="catAll">
+            <Link to="/Hcategory">
+              <span>Home Goods</span> 
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li className="catAll">
+            <Link to="/Scategory">
+              <span > Specials</span> 
+            </Link>
+          </li>
+          <li className="catAll">
+            <Link to="/Ecategory">
+              <span > Electronics</span> 
+            </Link>
+          </li>
+          <li className="catAll">
+            <Link to="/Hcategory">
+              <span>Home Goods</span> 
+            </Link>
+          </li>
+        </ul>
+        <ul>
+          <li className="catAll">
+            <Link to="/Scategory">
+              <span > Specials</span> 
+            </Link>
+          </li>
+          <li className="catAll">
+            <Link to="/Ecategory">
+              <span > Electronics</span> 
+            </Link>
+          </li>
+          <li className="catAll">
+            <Link to="/Hcategory">
+              <span>Home Goods</span> 
+            </Link>
+          </li>
         </ul>
       </div>
-    let categories2 = <h2>world</h2>
-    let categories3 = <h2>hello world</h2>
+    let categories2 = 
+      <div className="categoriesContainer">
+        <BudgetList color={"white"}/>
+      </div>
+    // let categories3 = <h2>hello world</h2>
     return (
         <div
         style={{
@@ -60,11 +104,11 @@ const NavbarBottom = () => {
         }}
         >
             <Paper square>
-                <MuiThemeProvider theme={theme}>
+                <MuiThemeProvider theme={themes}>
                     <Tabs
                         value={value}
-                        textColor="secondary"
-                        indicatorColor="secondary"
+                        textColor="primary"
+                        indicatorColor="primary"
                         centered
                         variant="fullWidth"
                         onChange={(event, newValue) => {
@@ -73,11 +117,11 @@ const NavbarBottom = () => {
                     >
                         <Tab label="Categories"  />
                         <Tab label="Budget Buddy" />
-                        <Tab label="Barcode Scanner" />
+                        {/* <Tab label="Barcode Scanner" /> */}
                     </Tabs>
                     {value == 0 ? categories : ""}
                     {value == 1 ? categories2 : ""}
-                    {value == 2 ? categories3 : ""}
+                    {/* {value == 2 ? categories3 : ""} */}
                 </MuiThemeProvider>
             </Paper>
        

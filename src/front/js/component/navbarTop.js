@@ -19,9 +19,9 @@ export const MyNavbar = () => {
 	return (
 			<Navbar id="topNav">
 			  <Container fluid >
-				<Navbar.Brand href="#" style={{color:"white"}}>
+				<Navbar.Brand href="/" id="brand">
+					<i className="fa fa-shopping-cart" aria-hidden="true"></i>{" "}
 					Shop Smart
-					<i className="fa fa-shopping-cart" aria-hidden="true"></i>
 				</Navbar.Brand>
 				{/* <Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll"> */}
