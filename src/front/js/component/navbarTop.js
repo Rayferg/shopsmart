@@ -10,6 +10,7 @@ import { useState, useContext, useEffect } from "react";
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Login from "./Login";
 import { Context } from "../store/appContext";
+import SearchBar from "./SearchBar";
 
 export const MyNavbar = () => {
 	const [show, setShow] = useState(false);
@@ -30,21 +31,14 @@ export const MyNavbar = () => {
 					style={{ maxHeight: '100px' }}
 					navbarScroll
 				  > */}
-					<Form className="searchbar">
-					<Form.Control
-					  type="search"
-					  placeholder="Search"
-					  className="me-2"
-					  aria-label="Search"
-					/>
-				  </Form>
+				<SearchBar/>
 				<Button variant="primary" onClick={handleShow}>
 					LogIn
 				</Button>
 
 				<Offcanvas show={show} placement='end' onHide={handleClose} >
 					<Offcanvas.Header closeButton>
-						<Offcanvas.Title>LogIn</Offcanvas.Title>
+						<Offcanvas.Title></Offcanvas.Title>
 					</Offcanvas.Header>
 					<Offcanvas.Body>
 						<Login />

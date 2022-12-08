@@ -1,6 +1,11 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.col-3 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
 .categoriesContainer {
   display: flex;
   justify-content: center;

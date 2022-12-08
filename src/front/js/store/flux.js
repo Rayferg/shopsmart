@@ -4,13 +4,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			beanSpecials: [],
 			beanElectronics: [],
 			beanHomegoods: [],
+			filteredSpecials:[],
 			beanBudgetList:[
-				{"name": "item1", "value":5},
-				{"name": "item1", "value":7}
+				// {"name": "item1", "value":5},
+				// {"name": "item1", "value":7}
 			],
+			notHome: false,
+			allData: [],
 			beanCart:[
-				{"name": "item1", "value":5},
-				{"name": "item2", "value":7}
+				// {"name": "item1", "value":5},
+				// {"name": "item2", "value":7}
 			],
 			// allItems:[],
 			token: null,
@@ -18,6 +21,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			newUser: false,
 		},
 		actions: {
+			putInFiltered: (array) => {
+				const store = getStore();
+				let filtered = array
+				setStore({filteredSpecials: filtered})
+			},
 			handleNewUserTrueOrFalse: (e) => {
 				let newUser = getStore().newUser
 				newUser = e
@@ -165,13 +173,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 				// fetch people from CustomContent
-				fetch('beanShop.json', opts)
+				fetch('customContent.json', opts)
 				.then((response) => response.json())
 				.then((data) => {
 					console.log(data);
 					let specials = data.specials
-					let electronics = data.electronics
-					let homegoods = data.homegoods
+					let electronics = data.Electronics
+					let homegoods = data.HomeGoods
+					let toys = data.Toys
+					let myArr = specials
+								.concat(electronics)
+								.concat(homegoods)
+								.concat(toys)
+					console.log(myArr);
+					// myArr.concat(data.electronics)
+
+					setStore({allData:myArr})
+					// store.allData.push(electronics)
 
 					setStore({beanSpecials:specials, beanElectronics:electronics, beanHomegoods:homegoods})
 					// setStore({allItems:specials, electronics, homegoods})
@@ -192,6 +210,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getHomeGoods: (idx) => {
 				const special = getStore().beanHomegoods;
 				return special[idx];
+			},
+			notHomeTrueOrFalse: (e) => {
+				let notHome = getStore().notHome
+				notHome = e
+				setStore({notHome:notHome})
 			},
 		}
 	};
