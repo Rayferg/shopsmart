@@ -7,7 +7,7 @@ export const Ecategory = () => {
 
 	return (
 		<div className="text-center categoryCont">
-			<h2 className="color01">Electronics</h2>
+			<h2 className="catecolor">Electronics</h2>
 			<div className="row">
 				{store.beanElectronics.map((item, idx) => {
 					return (

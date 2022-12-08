@@ -10,7 +10,7 @@ const RegularView = () => {
     return (
     <div className="text-center bodyCont bg-color04">
       <Banner />
-      <h2 className="color01">Specials!</h2>
+      <h2 className="catecolor">Specials!</h2>
       <Link to="/Scategory">
         <span className="viewAllAncor">View All Specials</span>
       </Link>
@@ -23,7 +23,7 @@ const RegularView = () => {
           );
         })}
       </div>
-      <h2 className="color01">Electronics!</h2>
+      <h2 className="catecolor">Electronics!</h2>
       <Link to="/Ecategory">
         <span className="viewAllAncor">View All Electronics</span>
       </Link>
@@ -36,7 +36,7 @@ const RegularView = () => {
           );
         })}
       </div>
-      <h2 className="color01">Home Goods!</h2>
+      <h2 className="catecolor">Home Goods!</h2>
       <Link to="/Hcategory">                
             <span className="viewAllAncor">View All Home Goods</span>
         </Link> 

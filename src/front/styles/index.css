@@ -1,6 +1,16 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.btn-danger{
+  margin: 4rem;
+  padding: 1rem;
+}
+.foot{
+  background-color: #24272B;
+}
+.catecolor{
+  color: #e8e9ec;
+}
 .col-3 {
   display: flex;
   justify-content: center;
