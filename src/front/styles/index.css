@@ -1,6 +1,11 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
-*/
+*/.me-2{
+  width: 50rem;
+}
+.catpage{
+  background-color: #2e3338;
+}
 .btn-danger{
   margin: 4rem;
   padding: 1rem;

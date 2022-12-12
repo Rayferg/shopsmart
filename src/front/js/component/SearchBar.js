@@ -39,9 +39,9 @@ const SearchBar = () => {
 	};
 
   return (
-    <form className="search d-flex" role="search">
+    <form className="search d-flex sbcont " role="search">
         <input 
-            className="form-control me-2" 
+            className="form-control me-2 sbcont" 
             type="search" 
             placeholder="Search" 
             aria-label="Search"

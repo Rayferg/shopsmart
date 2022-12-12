@@ -6,7 +6,7 @@ export const Ecategory = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center categoryCont">
+		<div className="text-center categoryCont catpage">
 			<h2 className="catecolor">Electronics</h2>
 			<div className="row">
 				{store.beanElectronics.map((item, idx) => {

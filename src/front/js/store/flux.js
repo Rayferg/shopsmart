@@ -97,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try {
 				  const resp = await fetch(
-					"https://3001-rayferg-shopsmart-86o31b7ztig.ws-us77.gitpod.io/api/login",
+					"https://3001-rayferg-shopsmart-7qs958yarjg.ws-us78.gitpod.io/api/login",
 					opts
 				  );
 				  if (resp.status !== 200) {
@@ -138,7 +138,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try {
 					const resp = await fetch(
-					  "https://3001-rayferg-shopsmart-86o31b7ztig.ws-us77.gitpod.io/api/createUser",
+					  "https://3001-rayferg-shopsmart-7qs958yarjg.ws-us78.gitpod.io/api/createUser",
 					  opts
 					);
 					if (resp.status !== 200) {

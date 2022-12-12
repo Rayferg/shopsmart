@@ -5,7 +5,7 @@ import Card from "../component/Card";
 const FilteredView = () => {
     const { store, actions } = useContext(Context);
   return (
-    <div className="row">
+    <div className="row catpage">
         {store.filteredSpecials.map((item, idx) => {
             return (
                 <div className="col-3" key={idx}>
