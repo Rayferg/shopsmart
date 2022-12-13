@@ -8,11 +8,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			beanToys:[],
 
 			filteredSpecials:[],
+
 			beanBudgetList:[],
+			values: {'total': 0, 'left': 0},
+
+			beanCart:[],
+			cartValues: {'total': 0, 'left': 0},
+
 			notHome: false,
 			allData: [],
-			beanCart:[],
-			values: {'total': 0, 'left': 0},
 			// allItems:[],
 			token: null,
 			isLoggedIn: false,
@@ -38,17 +42,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handleCartItemDelete: (idx) => {
 				const cart = getStore().beanCart
 				let filtered = cart.filter((f, i) => i !== idx)
-				setStore({beanCart: filtered})
+				let v = {
+					"total": getStore().cartValues.total,
+					"left": getStore().cartValues.total - filtered.reduce(function (acc, obj) { return acc - parseFloat(obj.value); }, 0)
+				}
+				setStore({beanCart: filtered, cartValues: v})
 			},
 
 			addToCart: (name, value) => {
-				console.log(name, value);
+				// console.log(name, value);
 				let item = {
 					"name": name,
 					"value": value
 				}
 				getStore().beanCart.push(item)
-				setStore({beanCart: getStore().beanCart})
+				let v = {
+					"total": getStore().cartValues.total,
+					"left": getStore().cartValues.total + getStore().beanCart.reduce(function (acc, obj) { return acc + parseFloat(obj.value); }, 0)
+				}
+				setStore({beanCart: getStore().beanCart, cartValues: v})
 			},
 			handleItemDelete: (idx) => {
 				const beanBudgetList = getStore().beanBudgetList
@@ -68,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({values: v})
 			},
 			addToBudget: (name, value) => {
-				console.log(name, value);
+				// console.log(name, value);
 				let item = {
 					"name": name,
 					"value": value

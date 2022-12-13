@@ -10,15 +10,6 @@ function CartList() {
     const [values, setValues] = useState(0)
     // setValues(parseInt(0))
    
-    const handlecart = (e) => {
-        let v = values + e.target.value
-
-        values: v
-        
-        // console.log(v.left);
-        setValues(v)
-    }
-    
     
     return (  
         <div className='cart-list'>
@@ -35,8 +26,9 @@ function CartList() {
                 })}
             </div>
             <div className="cart-remainder">
-                <p>Left: {values.left}</p>
+                <p>total: {store.cartValues.left}</p>
             </div>
+            <button className="btn btn-primary">Check Out</button>
         </div>
 
   );

@@ -44,7 +44,7 @@ const RegularView = () => {
         {store.beanHomegoods.map((item, idx) => {
           return (
             <div className="itemDiv" key={idx}>
-              <Card item={item} id={idx} type="homeGoods" />
+              <Card item={item} id={idx} type="homegoods" />
             </div>
           );
         })}

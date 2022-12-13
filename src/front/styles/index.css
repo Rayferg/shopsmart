@@ -1,7 +1,21 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+/* budgetbuddy---------------------------------------------- */
+.bbInstructions {
+  margin: 0rem 6rem 0rem 3rem ;
+}
+.bbInstructions > h5 {
+  color: white;
+}
+.bbInstructions > h6 {
+  color: white;
+}.bbInstructions > h4 {
+  color: white;
+  border-bottom: 1px solid white;
+}
 
+/* ------------------------------------------------------------ */
 .catpage{
   background-color: #2e3338;
 }

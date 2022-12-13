@@ -92,6 +92,13 @@ const NavbarBottom = () => {
       </div>
     let categories2 = 
       <div className="categoriesContainer">
+        <div className="bbInstructions">
+          <h4><strong>Instructions:</strong></h4>
+          <h6>Step 1: Enter desired budget amount</h6>
+          <h6>Step 2: Browse the store and add items to BudgetBuddy</h6>
+          <h6>Once you have all the desired items go back check if <br/> they are within budget and continue to check out</h6>
+          <h5>Thank you for trying BudgetBuddy</h5>
+        </div>
         <BudgetList color={"white"}/>
       </div>
     // let categories3 = <h2>hello world</h2>
