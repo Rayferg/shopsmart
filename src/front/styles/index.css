@@ -1,8 +1,7 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
-*/.me-2{
-  width: 50rem;
-}
+*/
+
 .catpage{
   background-color: #2e3338;
 }
@@ -45,7 +44,7 @@
   align-items: center;
 }
 .searchbar {
-    width: 30%;
+    width: 50%;
     /* text-align:center; */
 }
 .myBtn {

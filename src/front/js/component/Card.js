@@ -5,9 +5,10 @@ const Card = (props) => {
   // console.log(props.id)
   return (
     <div className="card" style={{ width: "12rem" }}>
-      <Link to={"/ViewItem/" + props.type + props.id}>
+      <Link to={"/ViewItem/" + props.type +'/'+ props.id}>
         <img
           src={props.item.image}
+          referrerPolicy="no-referrer"
           className="card-img-top card-img"
           alt="..."
         />

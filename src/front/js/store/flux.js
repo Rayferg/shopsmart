@@ -4,17 +4,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			beanSpecials: [],
 			beanElectronics: [],
 			beanHomegoods: [],
+			beanBeauty:[],
+			beanToys:[],
+
 			filteredSpecials:[],
-			beanBudgetList:[
-				// {"name": "item1", "value":5},
-				// {"name": "item1", "value":7}
-			],
+			beanBudgetList:[],
 			notHome: false,
 			allData: [],
-			beanCart:[
-				// {"name": "item1", "value":5},
-				// {"name": "item2", "value":7}
-			],
+			beanCart:[],
+			values: {'total': 0, 'left': 0},
 			// allItems:[],
 			token: null,
 			isLoggedIn: false,
@@ -55,9 +53,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			handleItemDelete: (idx) => {
 				const beanBudgetList = getStore().beanBudgetList
 				let filtered = beanBudgetList.filter((f, i) => i !== idx)
-				setStore({beanBudgetList: filtered})
+				let v = {
+					"total": getStore().values.total,
+					"left": getStore().values.total - filtered.reduce(function (acc, obj) { return acc + parseFloat(obj.value); }, 0)
+				}
+				console.log(v.left);
+				setStore({beanBudgetList: filtered, values: v})
 			},
-
+			handleBudget: (value) => {
+				let v = {
+					"total": value,
+					"left": value - getStore().beanBudgetList.reduce(function (acc, obj) { return acc + parseFloat(obj.value); }, 0)
+				}
+				setStore({values: v})
+			},
 			addToBudget: (name, value) => {
 				console.log(name, value);
 				let item = {
@@ -65,7 +74,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					"value": value
 				}
 				getStore().beanBudgetList.push(item)
-				setStore({beanBudgetList: getStore().beanBudgetList})
+				let v = {
+					"total": getStore().values.total,
+					"left": getStore().values.total - getStore().beanBudgetList.reduce(function (acc, obj) { return acc + parseFloat(obj.value); }, 0)
+				}
+				setStore({beanBudgetList: getStore().beanBudgetList, values: v})
 			},
 
 			syncTokenFromSessionStore: () => {
@@ -173,25 +186,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 				// fetch people from CustomContent
-				fetch('customContent.json', opts)
+				fetch('https://nice-cyan-vulture-cap.cyclic.app/products', opts)
 				.then((response) => response.json())
 				.then((data) => {
 					console.log(data);
 					let specials = data.specials
+					console.log(specials);
 					let electronics = data.Electronics
 					let homegoods = data.HomeGoods
+					let pets = data.Pets
+					let beauty = data.Beauty
 					let toys = data.Toys
 					let myArr = specials
 								.concat(electronics)
 								.concat(homegoods)
 								.concat(toys)
+								.concat(pets)
+								.concat(beauty)
+
 					console.log(myArr);
 					// myArr.concat(data.electronics)
 
 					setStore({allData:myArr})
 					// store.allData.push(electronics)
 
-					setStore({beanSpecials:specials, beanElectronics:electronics, beanHomegoods:homegoods})
+					setStore({
+								beanSpecials:specials, 
+								beanElectronics:electronics, 
+								beanHomegoods:homegoods,
+								beanBeauty:beauty,
+								beanToys:toys
+							})
 					// setStore({allItems:specials, electronics, homegoods})
 				})
 				.catch((error) => {
@@ -201,15 +226,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getSpecials: (idx) => {
 				const special = getStore().beanSpecials;
+				console.log(special[idx]);
 				return special[idx];
 			},
 			getElectronics: (idx) => {
-				const special = getStore().beanElectronics;
-				return special[idx];
+				const electronics = getStore().beanElectronics;
+				return electronics[idx];
 			},
 			getHomeGoods: (idx) => {
-				const special = getStore().beanHomegoods;
-				return special[idx];
+				const homegoods = getStore().beanHomegoods;
+				return homegoods[idx];
+			},
+			getBeauty: (idx) => {
+				const beauty = getStore().beanBeauty;
+				return beauty[idx];
+			},
+			getToys: (idx) => {
+				const toys = getStore().beanToys;
+				return toys[idx];
+			},
+			getAllData: (idx) => {
+				const data = getStore().filteredSpecials;
+				return data[idx];
 			},
 			notHomeTrueOrFalse: (e) => {
 				let notHome = getStore().notHome

@@ -12,7 +12,7 @@ export const Hcategory = () => {
 				{store.beanHomegoods.map((item, idx) => {
 					return (
 						<div className="col-3" key={idx}>
-							<Card item={item} id={idx} />
+							<Card item={item} id={idx} type="homegoods"/>
 						</div>
 					)
 				})}

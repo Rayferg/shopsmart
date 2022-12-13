@@ -7,20 +7,17 @@ import { Link } from "react-router-dom";
     
 function CartList() {
     const {store, actions} = useContext(Context)
-    const [values, setValues] = useState({
-        "total": 0,
-        "left": 0
-    })
-    const [items, setItems] = useState([])
+    const [values, setValues] = useState(0)
+    // setValues(parseInt(0))
    
-    // const handlecart = (e) => {
-    //     let v = {
-    //         "total": e.target.value,
-    //         "left": e.target.value
-    //     }
-    //     console.log(v.left);
-    //     setValues(v)
-    // }
+    const handlecart = (e) => {
+        let v = values + e.target.value
+
+        values: v
+        
+        // console.log(v.left);
+        setValues(v)
+    }
     
     
     return (  

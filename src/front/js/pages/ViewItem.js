@@ -9,16 +9,22 @@ function ViewItem() {
   const [value, setValue] = useState();
   let params = useParams();
   let selectedValue = useRef("");
-  // console.log(params);
+  console.log(params);
   let type = params.type;
   let item = null;
-  if (type == "special") {
+  if (type == "specials") {
     item = actions.getSpecials(parseInt(params.id));
     console.log(item);
   } else if (type == "electronics") {
     item = actions.getElectronics(parseInt(params.id));
-  } else {
+  } else if (type == "beauty") {
+    item = actions.getBeauty(parseInt(params.id));
+  } else if (type == "toys") {
+    item = actions.getToys(parseInt(params.id));
+  } else if (type == "homegoods") {
     item = actions.getHomeGoods(parseInt(params.id));
+  } else if (type == "allData"){
+    item = actions.getAllData(parseInt(params.id))
   }
 
   return (
@@ -43,7 +49,7 @@ function ViewItem() {
               ref={selectedValue}
             >
               <option selected>Choose Price...</option>
-              <option value={item.beanShopPrice}>
+              <option value={item.costcoPrice}>
                 Costco {item.costcoPrice}
               </option>
               <option value={item.walmartPrice}>
@@ -57,7 +63,7 @@ function ViewItem() {
           <h5>
             <strong>Item Description</strong>
             <br />
-            {item.description}
+            {item.Description}
           </h5>
           <button
             id="btncb"

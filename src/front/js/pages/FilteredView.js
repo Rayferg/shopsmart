@@ -12,7 +12,7 @@ const FilteredView = () => {
                     <Card 
                         item={item} 
                         id={idx} 
-                        type="specials" 
+                        type="allData" 
                         // search={searchHash}
                     />
                 </div>

@@ -13,7 +13,10 @@ import { Footer } from "./component/Footer";
 import { Ecategory } from "./pages/Ecategory";
 import { Scategory } from "./pages/Scategory";
 import { Hcategory } from "./pages/Hcategory";
+import { Bcategory } from "./pages/Bcategory";
+import { Tcategory } from "./pages/Tcategory";
 import ViewItem from "./pages/ViewItem";
+import NotAvaliable from "./pages/NotAvaliable";
 
 //create your first component
 const Layout = () => {
@@ -32,7 +35,10 @@ const Layout = () => {
             <Route element={<Ecategory />} path="Ecategory" />
             <Route element={<Scategory />} path="Scategory" />
             <Route element={<Hcategory />} path="Hcategory" />
-            <Route element={<ViewItem />} path="ViewItem/:type:id" />
+            <Route element={<Tcategory />} path="Tcategory" />
+            <Route element={<Bcategory />} path="Bcategory" />
+            <Route element={<NotAvaliable />} path="NotAvalible" />
+            <Route element={<ViewItem />} path="ViewItem/:type/:id" />
             {/* <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} /> */}

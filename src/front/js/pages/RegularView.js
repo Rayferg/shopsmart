@@ -18,7 +18,7 @@ const RegularView = () => {
         {store.beanSpecials.map((item, idx) => {
           return (
             <div className="itemDiv" key={idx}>
-              <Card item={item} id={idx} type="special" />
+              <Card item={item} id={idx} type="specials" />
             </div>
           );
         })}

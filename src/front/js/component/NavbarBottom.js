@@ -57,36 +57,36 @@ const NavbarBottom = () => {
         </ul>
         <ul>
           <li className="catAll">
-            <Link to="/Scategory">
-              <span > Specials</span> 
+            <Link to="/NotAvalible">
+              <span > Pets</span> 
             </Link>
           </li>
           <li className="catAll">
-            <Link to="/Ecategory">
-              <span > Electronics</span> 
+            <Link to="/Bcategory">
+              <span >Beauty</span> 
             </Link>
           </li>
           <li className="catAll">
-            <Link to="/Hcategory">
-              <span>Home Goods</span> 
+            <Link to="/Tcategory">
+              <span>Toys</span> 
             </Link>
           </li>
         </ul>
         <ul>
           <li className="catAll">
-            <Link to="/Scategory">
-              <span > Specials</span> 
+            <Link to="/NotAvalible">
+              <span > Gardening</span> 
             </Link>
           </li>
           <li className="catAll">
-            <Link to="/Ecategory">
-              <span > Electronics</span> 
+            <Link to="/NotAvalible">
+              <span > Seasonal</span> 
             </Link>
           </li>
           <li className="catAll">
-            <Link to="/Hcategory">
-              <span>Home Goods</span> 
-            </Link>
+            <Link to="/NotAvalible">
+              <span>Organization</span> 
+            </Link> 
           </li>
         </ul>
       </div>
